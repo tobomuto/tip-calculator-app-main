@@ -1,0 +1,17 @@
+@charset "UTF-8";
+body {
+  width: 100vh;
+  background-color: #c5e4e7;
+}
+
+.footer {
+  font-size: 11px;
+  text-align: right;
+}
+.footer a {
+  color: #3e52a3;
+}
+
+@media screen and (min-width: 640px) {
+  /* réglage à partir de 640px et + : corps un peu plus grand et même typo */
+}
