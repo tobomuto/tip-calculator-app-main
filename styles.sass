@@ -4,14 +4,164 @@ $lightColor: hsl(189, 41%, 97%)
 $darkColor: hsl(183, 100%, 15%)
 $darkColor2: hsl(186, 14%, 43%)
 $darkColor3: hsl(184, 14%, 56%)
-
-
+$font: 'Space Mono', monospace
 body
-  width: 100vh
+  display: flex
+  flex-direction: column
+
+  align-items: center
+
+  height: 100vh
+  padding: 0
+  margin: 0
+  font-family: $font
+
   background-color: $backgroundColor
-.footer  
-  font-size: 11px 
-  text-align: right
+  .logo
+    margin: 3rem 0
+  .calculator
+    display: flex
+    flex-direction: column
+    background-color: white
+    border-radius: 24px
+    padding: 30px
+    box-sizing: border-box
+    width: 100%
+    justify-content: center
+    .calculate
+      display: flex
+      flex-direction: column
+      width: 95%
+      align-self: center
+      margin-bottom: 2rem
+      section
+        margin-bottom: 2rem
+      h4
+        color: $darkColor2
+        margin: 0
+        margin-bottom: 1rem
+      .input--wrap
+        position: relative
+        display: flex
+        align-items: center
+        width: 100%
+        background-color: $lightColor
+        border-radius: 8px
+        box-sizing: border-box
+        padding: 0.5rem 1rem
+        input
+          border: none
+          width: 100%
+          height: 25px
+          background-color: transparent
+          text-align: right
+          &:focus ::placeholder
+            display: none
+          &:focus
+            outline: none
+            color: $darkColor
+            font-family: $font
+            font-weight: bold
+            font-size: 22px
+          &::placeholder
+            color: $darkColor3
+            font-family: $font
+            font-weight: bold
+            font-size: 22px
+            position: absolute
+            top: 50%
+            right: 5px
+            transform: translateY(-50%)
+            
+      .buttons
+        width: 100%
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-gap: 15px
+        input[type=checkbox]
+          display: none
+        .input--custom
+          position: relative
+          display: flex
+          align-items: center
+          padding: 0 1rem
+          background-color: $lightColor
+          box-sizing: border-box
+          border-radius: 8px
+          input
+            border: none
+            width: 100%
+            height: 25px
+            background-color: transparent
+            text-align: right
+            &:focus
+              outline: none
+              color: $darkColor
+              font-family: $font
+              font-weight: bold
+              font-size: 22px
+            &::placeholder
+              color: $darkColor3
+              font-family: $font
+              font-weight: bold
+              font-size: 22px
+              position: absolute
+              top: 50%
+              right: 5px
+              transform: translateY(-50%)
+        .button
+          display: flex
+          align-items: center
+          justify-content: center
+          label
+            text-align: center
+            width: 100%
+            background-color: $darkColor
+            border-radius: 8px
+            font-family: $font
+            font-size: 22px
+            font-weight: 700
+            color: white
+            padding: 0.5rem 0
+        input:checked~label
+          background-color: $primaryColor
+          color: $darkColor
+    .results
+      box-sizing: border-box
+      padding: 2rem 1.5rem 1.5rem 1.5rem
+      background-color: $darkColor
+      border-radius: 16px
+      .results-wrapper
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom: 2rem
+        p
+          margin: 0
+          color: $lightColor
+          font-weight: bold
+          font-size: 14px
+        span
+          color: $darkColor3
+          font-weight: bold
+          font-size: 14px
+        span.result
+          font-size: 32px
+          color: $primaryColor
+      button
+        width: 100%
+        height: 50px
+        border-radius: 8px
+        border: none
+        background-color: $primaryColor
+        color: $darkColor
+        font-family: $font
+        font-weight: bold
+        font-size: 22px
+
+.footer
+  font: 11px 
+  text-align: center
   a 
     color: hsl(228, 45%, 44%)
 
