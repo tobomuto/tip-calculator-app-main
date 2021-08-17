@@ -8,9 +8,7 @@ $font: 'Space Mono', monospace
 body
   display: flex
   flex-direction: column
-
   align-items: center
-
   height: 100vh
   padding: 0
   margin: 0
@@ -42,23 +40,28 @@ body
         margin-bottom: 1rem
       .input--wrap
         position: relative
-        display: flex
-        align-items: center
-        width: 100%
-        background-color: $lightColor
-        border-radius: 8px
-        box-sizing: border-box
-        padding: 0.5rem 1rem
+        // display: flex
+        // align-items: center
+        // width: 100%
+        // border-radius: 8px
+        // box-sizing: border-box
+        // padding: 0.5rem 1rem
+        img
+          position: absolute
+          transform: translateY(-50%)
+          top: 50%
+          left: 15px
         input
+          border-radius: 8px
           border: none
           width: 100%
-          height: 25px
-          background-color: transparent
+          height: 40px
+          background-color: $lightColor
           text-align: right
-          &:focus ::placeholder
-            display: none
+          box-sizing: border-box
           &:focus
-            outline: none
+            outline: none !important
+            border:2px solid $primaryColor
             color: $darkColor
             font-family: $font
             font-weight: bold
@@ -70,7 +73,7 @@ body
             font-size: 22px
             position: absolute
             top: 50%
-            right: 5px
+            right: 15px
             transform: translateY(-50%)
             
       .buttons
@@ -114,6 +117,7 @@ body
           align-items: center
           justify-content: center
           label
+            cursor: pointer
             text-align: center
             width: 100%
             background-color: $darkColor
@@ -124,13 +128,17 @@ body
             color: white
             padding: 0.5rem 0
         input:checked~label
-          background-color: $primaryColor
+          background-color: hsl(172, 67%, 85%)
           color: $darkColor
     .results
+      display: flex
+      flex-direction: column
       box-sizing: border-box
       padding: 2rem 1.5rem 1.5rem 1.5rem
       background-color: $darkColor
       border-radius: 16px
+      .results-container
+        flex-grow:1
       .results-wrapper
         display: flex
         align-items: center
@@ -158,12 +166,24 @@ body
         font-family: $font
         font-weight: bold
         font-size: 22px
-
+        align-self: end
+        &:active
+          background-color: hsl(172, 67%, 85%)
+        &:hover
+          cursor: pointer
 .footer
-  font: 11px 
+  font-size: 11px 
   text-align: center
   a 
     color: hsl(228, 45%, 44%)
 
 @media screen and (min-width:640px)
   /* réglage à partir de 640px et + : corps un peu plus grand et même typo */
+  .calculator
+    flex-direction: row !important
+    justify-content: space-between !important
+    max-width: 1000px
+    .calculate
+      width: 45% !important
+    .results
+      width: 45% !important

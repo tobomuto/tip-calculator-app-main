@@ -39,26 +39,25 @@ body .calculator .calculate h4 {
 }
 body .calculator .calculate .input--wrap {
   position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background-color: #f4fafa;
-  border-radius: 8px;
-  box-sizing: border-box;
-  padding: 0.5rem 1rem;
+}
+body .calculator .calculate .input--wrap img {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 15px;
 }
 body .calculator .calculate .input--wrap input {
+  border-radius: 8px;
   border: none;
   width: 100%;
-  height: 25px;
-  background-color: transparent;
+  height: 40px;
+  background-color: #f4fafa;
   text-align: right;
-}
-body .calculator .calculate .input--wrap input:focus ::placeholder {
-  display: none;
+  box-sizing: border-box;
 }
 body .calculator .calculate .input--wrap input:focus {
-  outline: none;
+  outline: none !important;
+  border: 2px solid #26c0ab;
   color: #00494d;
   font-family: "Space Mono", monospace;
   font-weight: bold;
@@ -71,7 +70,7 @@ body .calculator .calculate .input--wrap input::placeholder {
   font-size: 22px;
   position: absolute;
   top: 50%;
-  right: 5px;
+  right: 15px;
   transform: translateY(-50%);
 }
 body .calculator .calculate .buttons {
@@ -122,6 +121,7 @@ body .calculator .calculate .buttons .button {
   justify-content: center;
 }
 body .calculator .calculate .buttons .button label {
+  cursor: pointer;
   text-align: center;
   width: 100%;
   background-color: #00494d;
@@ -133,14 +133,19 @@ body .calculator .calculate .buttons .button label {
   padding: 0.5rem 0;
 }
 body .calculator .calculate .buttons input:checked ~ label {
-  background-color: #26c0ab;
+  background-color: #bff2ec;
   color: #00494d;
 }
 body .calculator .results {
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   background-color: #00494d;
   border-radius: 16px;
+}
+body .calculator .results .results-container {
+  flex-grow: 1;
 }
 body .calculator .results .results-wrapper {
   display: flex;
@@ -173,10 +178,17 @@ body .calculator .results button {
   font-family: "Space Mono", monospace;
   font-weight: bold;
   font-size: 22px;
+  align-self: end;
+}
+body .calculator .results button:active {
+  background-color: #bff2ec;
+}
+body .calculator .results button:hover {
+  cursor: pointer;
 }
 
 .footer {
-  font: 11px;
+  font-size: 11px;
   text-align: center;
 }
 .footer a {
@@ -185,4 +197,15 @@ body .calculator .results button {
 
 @media screen and (min-width: 640px) {
   /* réglage à partir de 640px et + : corps un peu plus grand et même typo */
+  .calculator {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    max-width: 1000px;
+  }
+  .calculator .calculate {
+    width: 45% !important;
+  }
+  .calculator .results {
+    width: 45% !important;
+  }
 }
