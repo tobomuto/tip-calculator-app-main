@@ -24,6 +24,7 @@ body
     border-radius: 24px
     padding: 30px
     box-sizing: border-box
+    min-width: 300px
     width: 100%
     justify-content: center
     .calculate
@@ -59,13 +60,13 @@ body
           background-color: $lightColor
           text-align: right
           box-sizing: border-box
+          font-family: $font
+          font-weight: bold
+          font-size: 22px
+          color: $darkColor
           &:focus
             outline: none !important
             border:2px solid $primaryColor
-            color: $darkColor
-            font-family: $font
-            font-weight: bold
-            font-size: 22px
           &::placeholder
             color: $darkColor3
             font-family: $font

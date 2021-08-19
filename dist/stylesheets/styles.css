@@ -19,6 +19,7 @@ body .calculator {
   border-radius: 24px;
   padding: 30px;
   box-sizing: border-box;
+  min-width: 300px;
   width: 100%;
   justify-content: center;
 }
@@ -54,14 +55,14 @@ body .calculator .calculate .input--wrap input {
   background-color: #f4fafa;
   text-align: right;
   box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+  font-weight: bold;
+  font-size: 22px;
+  color: #00494d;
 }
 body .calculator .calculate .input--wrap input:focus {
   outline: none !important;
   border: 2px solid #26c0ab;
-  color: #00494d;
-  font-family: "Space Mono", monospace;
-  font-weight: bold;
-  font-size: 22px;
 }
 body .calculator .calculate .input--wrap input::placeholder {
   color: #7f9c9f;
