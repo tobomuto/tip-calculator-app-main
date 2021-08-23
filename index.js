@@ -12,6 +12,7 @@ const inputTip = document.querySelector('.tip-input');
 const inputPeople = document.querySelector('.people-input');
 
 let tipPercentage = 0;
+let tipPerPerson = 0;
 let bill = 0;
 let person = 0;
 let totalTip = 0;
@@ -29,23 +30,24 @@ inputTip.addEventListener('keyup', calculate);
 function calculate() {
     person = inputPeople.value
     bill = inputBill.value
-    if (!tipPercentage) {
+    if (tipPercentage === 0) {
         if (bill === 0 || person === 0) {
             resultTotal.innerText = '$0.00';
         } else if (bill > 0 && person > 0 ) {
             resultTotal.innerText = ( bill / person ).toFixed(2);
         }
-    } else {
-        totalTip = (( bill * tipPercentage ) / 100 ) / person;
-        return (resultTip.innerText = totalTip);
+    } else if(tipPercentage > 0) {
+        totalTip = (( bill * tipPercentage ) / 100 ).toFixed(2);
+        tipPerPerson = parseInt((totalTip / person).toFixed(2));
+        totalPerPerson = ( bill / person ) + tipPerPerson;
+        console.log(typeof totalPerPerson)
+        resultTip.innerText = tipPerPerson;
+        resultTotal.innerText = totalPerPerson.toFixed(2);
     }
 }
 
-function setPercentage() {
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            tipPercentage = checkboxes[i].id;
-        }
-    }
+function setPercentage(e) {
+    let clickedPercentage = parseInt(e.target.innerText.slice(0, 2));
+    tipPercentage = clickedPercentage;
     calculate();
 }
