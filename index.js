@@ -1,15 +1,11 @@
-const tipSection = document.querySelector('#tip')
-const billSection = document.querySelector('#bill')
-const numberOfPeopleSection = document.querySelector('#number-of-people')
-
-// const keys = document.getElementsByClassName('button');
-const checkboxes = document.querySelectorAll("div.button > input");
+//Dom selectors
 const buttons = document.querySelectorAll("div.button > .checkbox");
 const resultTip = document.getElementById('tipResult');
 const resultTotal = document.getElementById('totalResult');
 const inputBill = document.querySelector('.bill-input');
 const inputTip = document.querySelector('.tip-input');
 const inputPeople = document.querySelector('.people-input');
+const resetButton = document.querySelector('.resetButton');
 
 let tipPercentage = 0;
 let tipPerPerson = 0;
@@ -19,13 +15,13 @@ let totalTip = 0;
 let totalPerPerson = 0;
 
 //Event Listeners
-// buttons.addEventListener('click', setPercentage(this[index]))
 buttons.forEach(button => {
     button.addEventListener('click', setPercentage)
 });
 inputBill.addEventListener('keyup', calculate);
 inputPeople.addEventListener('keyup', calculate);
 inputTip.addEventListener('keyup', calculate);
+resetButton.addEventListener('click', reset);
 
 function calculate() {
     person = inputPeople.value
@@ -40,7 +36,6 @@ function calculate() {
         totalTip = (( bill * tipPercentage ) / 100 ).toFixed(2);
         tipPerPerson = parseInt((totalTip / person).toFixed(2));
         totalPerPerson = ( bill / person ) + tipPerPerson;
-        console.log(typeof totalPerPerson)
         resultTip.innerText = tipPerPerson;
         resultTotal.innerText = totalPerPerson.toFixed(2);
     }
@@ -49,5 +44,15 @@ function calculate() {
 function setPercentage(e) {
     let clickedPercentage = parseInt(e.target.innerText.slice(0, 2));
     tipPercentage = clickedPercentage;
+    calculate();
+}
+
+function reset() {
+    inputPeople.value = "";
+    inputBill.value = "";
+    bill = 0;
+    person = 0;
+    totalTip = 0;
+    tipPercentage = 0;
     calculate();
 }
