@@ -45,17 +45,17 @@ function calculate() {
             totalTip = (( bill * tipPercentage ) / 100 ).toFixed(2);
             tipPerPerson = parseInt((totalTip / person).toFixed(2));
             totalPerPerson = ( bill / person ) + tipPerPerson;
-            resultTip.innerText = tipPerPerson;
-            resultTotal.innerText = totalPerPerson.toFixed(2);
+            resultTip.innerText = '$' + tipPerPerson;
+            resultTotal.innerText = '$' + totalPerPerson.toFixed(2);
         }
     }
 }
 
 function setPercentage(e) {
-    console.log(e.target)
+    // console.log(e.target.innerText.slice(0, -1))
     for (let i = 0; i < checkboxes.length; i++) {
-        if (e.target.innerText.slice(0, 2) == checkboxes[i].id && checkboxes[i].checked === false) {
-            let clickedPercentage = parseInt(e.target.innerText.slice(0, 2));
+        if (e.target.innerText.slice(0, -1) == checkboxes[i].id && checkboxes[i].checked === false) {
+            let clickedPercentage = parseInt(e.target.innerText.slice(0, -1));
             tipPercentage = clickedPercentage;
             calculate();
         } else if (e.target.innerText.slice(0, 2) == checkboxes[i].id && checkboxes[i].checked === true) {
@@ -66,11 +66,16 @@ function setPercentage(e) {
 }
 
 function reset() {
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
     inputPeople.value = "";
     inputBill.value = "";
     bill = 0;
     person = 0;
     totalTip = 0;
     tipPercentage = 0;
+    resultTotal.innerText = '$0.00';
+    resultTip.innerText = '$0.00';
     calculate();
 }
