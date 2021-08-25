@@ -53,7 +53,7 @@ Users should be able to:
 ### Continued development
 
 - I guess my code is pretty ugly and not very maintanable. I need to work on that.
-- 
+- Should check on BEM css
 
 ## Author
 
