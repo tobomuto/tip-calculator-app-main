@@ -8,6 +8,7 @@ const inputTip = document.querySelector('.tip-input');
 const inputPeople = document.querySelector('.people-input');
 const resetButton = document.querySelector('.resetButton');
 
+// Global variables
 let tipPercentage = 0;
 let tipPerPerson = 0;
 let bill = 0;
@@ -24,10 +25,7 @@ inputPeople.addEventListener('keyup', calculate);
 inputTip.addEventListener('keyup', setPercentage);
 resetButton.addEventListener('click', reset);
 
-window.addEventListener("load", function(event) {
-    console.log(buttons);
-});
-
+//Functions
 function calculate() {
     let person = inputPeople.value
     let bill = inputBill.value
@@ -59,9 +57,6 @@ function setPercentage(e) {
         for (let i = 0; i < checkboxes.length; i++) {
             checkboxes[i].checked = false;
             let clickedPercentage = parseInt(e.target.innerText.slice(0, -1));
-            // if (checkboxes[i].id == clickedPercentage && checkboxes[i].checked = false;) {
-            //     
-            // }
             tipPercentage = clickedPercentage;
             calculate();
         }
