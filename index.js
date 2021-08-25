@@ -21,7 +21,7 @@ buttons.forEach(button => {
 });
 inputBill.addEventListener('keyup', calculate);
 inputPeople.addEventListener('keyup', calculate);
-inputTip.addEventListener('keyup', calculate);
+inputTip.addEventListener('keyup', setPercentage);
 resetButton.addEventListener('click', reset);
 
 window.addEventListener("load", function(event) {
@@ -29,8 +29,8 @@ window.addEventListener("load", function(event) {
 });
 
 function calculate() {
-    person = inputPeople.value
-    bill = inputBill.value
+    let person = inputPeople.value
+    let bill = inputBill.value
     if (tipPercentage === 0) {
         if (bill === 0 || person === 0) {
             resultTotal.innerText = '$0.00';
@@ -52,17 +52,21 @@ function calculate() {
 }
 
 function setPercentage(e) {
-    // console.log(e.target.innerText.slice(0, -1))
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (e.target.innerText.slice(0, -1) == checkboxes[i].id && checkboxes[i].checked === false) {
+    if (inputTip.value) {
+        tipPercentage = parseInt(inputTip.value);
+        calculate();
+    } else {
+        for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false;
             let clickedPercentage = parseInt(e.target.innerText.slice(0, -1));
+            // if (checkboxes[i].id == clickedPercentage && checkboxes[i].checked = false;) {
+            //     
+            // }
             tipPercentage = clickedPercentage;
-            calculate();
-        } else if (e.target.innerText.slice(0, 2) == checkboxes[i].id && checkboxes[i].checked === true) {
-            tipPercentage = 0;
             calculate();
         }
     }
+
 }
 
 function reset() {
@@ -70,11 +74,8 @@ function reset() {
         checkboxes[i].checked = false;
     }
     inputPeople.value = "";
+    inputTip.value = ""
     inputBill.value = "";
-    bill = 0;
-    person = 0;
-    totalTip = 0;
-    tipPercentage = 0;
     resultTotal.innerText = '$0.00';
     resultTip.innerText = '$0.00';
     calculate();
