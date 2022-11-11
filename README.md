@@ -48,12 +48,6 @@ Users should be able to:
 - Just to try something new, I used gulp to render SASS in css.
 - I'm used to work on vue, I wanted to do this with only vanilla JS.
 
-
-### Continued development
-
-- I guess my code is pretty ugly and not very maintanable. I need to work on that.
-- Should check on BEM css
-
 ## Author
 
 - Website - [Thomas Bouvier](https://tombvr.fr)
